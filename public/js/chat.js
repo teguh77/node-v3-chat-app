@@ -59,7 +59,6 @@ const autoScroll = () => {
 const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true});
 
 socket.on('message', message => {
-  console.log(message);
   const html = Mustache.render(messageTemplate, {
     username: message.username,
     message: message.text,
@@ -70,12 +69,11 @@ socket.on('message', message => {
 });
 
 //locationMessage listener
-socket.on('locationMessage', url => {
-  console.log(url);
+socket.on('locationMessage', msg => {
   const html = Mustache.render(locationTemplate, {
-    username: url.username,
-    url: url.text, //.text itu hanya variable , nama bisa diganti apa aja
-    createdAt: moment(url.createdAt).format('h:mm a')
+    username: msg.username,
+    url: msg.url, //.text itu hanya variable , nama bisa diganti apa aja
+    createdAt: moment(msg.createdAt).format('h:mm a')
   });
   $messages.insertAdjacentHTML('beforeend', html);
   autoScroll();
@@ -130,7 +128,6 @@ $sendLocationButton.addEventListener('click', () => {
       },
       () => {
         $sendLocationButton.removeAttribute('disabled');
-        console.log('Location Shared!');
       }
     );
   });

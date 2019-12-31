@@ -82,10 +82,12 @@ io.on('connection', socket => {
   // 12
   socket.on('sendLocation', (location, callback) => {
     const user = getUser(socket.id);
-    const url = `https://google.com/maps?q=${location.latitude},${location.longitude}`;
     io.to(user.room).emit(
       'locationMessage',
-      generateLocation(user.username, url)
+      generateLocation(
+        user.username,
+        `https://google.com/maps?q=${location.latitude},${location.longitude}`
+      )
     );
     callback();
   });
