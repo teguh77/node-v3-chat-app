@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+    <link rel="icon" href="/img/favicon.png" />
+    <!--untuk path harus memperhatikan dirname seting yang di index.js  jika sudah ada public maka tidak perlu mengunakan slice public-->
+    <link rel="stylesheet" href="/css/styles.min.css" />
+  </head>
+  <body>
+    <div class="centered-form">
+      <div class="centered-form__box">
+        <h1>Join</h1>
+        <form action="/chat.html">
+          <label for="username">Display Name</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Display Name"
+            name="username"
+            required
+          />
+          <label for="room">Room</label>
+          <input
+            type="text"
+            id="room"
+            placeholder="Room"
+            name="room"
+            required
+          />
+          <button>Join</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
